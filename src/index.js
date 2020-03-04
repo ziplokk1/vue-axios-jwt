@@ -1,7 +1,7 @@
 /* @flow */
 
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
-import {clearAuthTokens, IAuthTokens, setAuthTokens} from 'axios-jwt';
+import {clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor} from 'axios-jwt';
 import { install } from './install'
 import {IAxiosJwtHandlerOptions} from '../types';
 
@@ -30,6 +30,10 @@ export default class AxiosJwtHandler {
         this.transformer = options.transformer || defaultTransformer;
         this.login = login;
         this.logout = logout;
+
+        useAuthTokenInterceptor(this.instance, {
+            requestRefresh: this.refresh
+        });
     }
 
     refresh(): Promise<string> {

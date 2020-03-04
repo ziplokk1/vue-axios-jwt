@@ -1,16 +1,4 @@
-import axios from "axios";
-import { useAuthTokenInterceptor } from "axios-jwt";
 export let _Vue;
-
-function axiosJwtBind() {
-  var options = this.$options; // store injection
-
-  if (options.store) {
-    this.$store = typeof options.store === 'function' ? options.store() : options.store;
-  } else if (options.parent && options.parent.$store) {
-    this.$store = options.parent.$store;
-  }
-}
 
 export function install(Vue) {
   // Used to avoid multiple mixins being setup
@@ -19,9 +7,6 @@ export function install(Vue) {
   if (install.installed && _Vue === Vue) return;
   install.installed = true; // add interceptor to your axios instance
 
-  useAuthTokenInterceptor(handler.instance, {
-    requestRefresh: handler.refresh
-  });
   Vue.mixin({
     beforeCreate() {
       if (this.$options.axiosJwtHandler !== undefined) {
@@ -35,9 +20,9 @@ export function install(Vue) {
     }
 
   });
-  Object.defineProperty(Vue.prototype, '$axiosJwtInstance', {
+  Object.defineProperty(Vue.prototype, '$instance', {
     get() {
-      return this._axiosJwtHandlerRoot._axiosJwtHandler;
+      return this._axiosJwtHandlerRoot._axiosJwtHandler.instance;
     }
 
   });

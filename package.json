@@ -1,7 +1,7 @@
 {
     "author": "ziplokk-1",
     "name": "vue-axios-jwt",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Vue plugin for axios-jwt",
     "main": "dist/index.js",
     "scripts": {

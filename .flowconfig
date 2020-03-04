@@ -1,0 +1,17 @@
+[ignore]
+.*/node_modules/.*
+.*/test/.*
+.*/dist/.*
+
+[include]
+
+[libs]
+flow
+
+[lints]
+prettier
+
+[options]
+
+[strict]
+true

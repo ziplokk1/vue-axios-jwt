@@ -1,65 +1,75 @@
 {
-  "name": "vue-axios-jwt",
-  "version": "1.0.1",
-  "description": "Vue plugin for axios-jwt",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/ -d dist/",
-    "prepublish": "npm run build",
-    "flow": "flow check",
-    "lint": "eslint src test"
-  },
-  "lint-staged": {
-    "*.{js}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "author": "ziplokk-1",
-  "license": "MIT",
-  "peerDependencies": {
-    "axios": "^0.19.2",
-    "vue": "^2.6.11"
-  },
-  "dependencies": {
-    "axios-jwt": "^1.2.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.6",
-    "@babel/preset-flow": "^7.8.3",
-    "axios": "^0.19.2",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^4.19.1",
-    "eslint-plugin-flowtype": "^4.6.0",
-    "flow-bin": "^0.119.1",
-    "prettier": "^1.19.1",
-    "typescript": "^3.5.1",
-    "vue": "^2.6.11"
-  },
-  "files": [
-    "src",
-    "dist/*.js",
-    "types/*.d.ts"
-  ],
-  "keywords": [
-    "vue",
-    "axios",
-    "jwt",
-    "axios-jwt",
-    "refresh",
-    "authentication",
-    "authorization",
-    "header",
-    "typescript",
-    "ts"
-  ],
-  "sideEffects": false,
-  "typings": "types/index.d.ts",
-  "unpkg": "dist/vue-router.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ziplokk1/vue-axios-jwt"
-  }
+    "author": "ziplokk-1",
+    "name": "vue-axios-jwt",
+    "version": "1.0.1",
+    "description": "Vue plugin for axios-jwt",
+    "main": "dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "babel src/ -d dist/",
+        "prepare": "npm run build",
+        "flow": "flow check",
+        "lint": "eslint src test"
+    },
+    "lint-staged": {
+        "*.{js}$": [
+            "eslint --fix",
+            "git add"
+        ],
+        "*.{json}$": [
+            "jsonlint --indent='    ' -s -q package.json",
+            "git add"
+        ]
+    },
+    "license": "MIT",
+    "peerDependencies": {
+        "axios": "^0.19.2",
+        "vue": "^2.6.11"
+    },
+    "dependencies": {
+        "axios-jwt": "^1.2.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.6",
+        "@babel/preset-flow": "^7.8.3",
+        "axios": "^0.19.2",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^4.19.1",
+        "eslint-plugin-flowtype": "^4.6.0",
+        "flow-bin": "^0.119.1",
+        "jsonlint": "^1.6.3",
+        "lint-staged": "^10.0.8",
+        "prettier": "^1.19.1",
+        "typescript": "^3.5.1",
+        "vue": "^2.6.11"
+    },
+    "files": [
+        "src",
+        "dist/*.js",
+        "types/*.d.ts"
+    ],
+    "keywords": [
+        "vue",
+        "axios",
+        "jwt",
+        "axios-jwt",
+        "refresh",
+        "authentication",
+        "authorization",
+        "header",
+        "typescript",
+        "ts"
+    ],
+    "sideEffects": false,
+    "typings": "types/index.d.ts",
+    "unpkg": "dist/vue-router.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ziplokk1/vue-axios-jwt"
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "node scripts/verifyCommitMsg.js"
+    }
 }

@@ -15,7 +15,7 @@ export default class AxiosJwtHandler {
     this.app = null;
     this.refreshEndpoint = options.refresh_endpoint;
     this.loginEndpoint = options.login_endpoint;
-    this.instance = options.instance || axios;
+    this.instance = options.instance || axios.create();
     this.transformer = options.transformer || defaultTransformer;
     this.login = login;
     this.logout = logout;
@@ -26,7 +26,7 @@ export default class AxiosJwtHandler {
 
   refresh() {
     return new Promise((resolve, reject) => {
-      this.instance.post(this.refreshEndpoint).then(response => {
+      axios.post(this.refreshEndpoint).then(response => {
         return resolve(this.transformer(response));
       }, reject);
     });

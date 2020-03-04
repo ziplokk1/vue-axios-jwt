@@ -3,8 +3,14 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import {clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor} from 'axios-jwt';
 import { install } from './install'
-import {IAxiosJwtHandlerOptions} from '../types';
 
+// More flow shit
+declare interface IAxiosJwtHandlerOptions {
+    instance?: AxiosInstance;
+    refresh_endpoint: string;
+    login_endpoint?: string;
+    transformer?: Promise<IAuthTokens>;
+}
 
 const defaultTransformer = (response: AxiosResponse): IAuthTokens => ({
     accessToken: response.data.access_token,
@@ -18,8 +24,11 @@ export default class AxiosJwtHandler {
     static install: () => void;
 
     refreshEndpoint: string;
-    loginEndpoint: string;
+    loginEndpoint: ?string;
     instance: AxiosInstance;
+    transformer: any;
+    logout: () => void;
+    login: (IAuthTokens) => void;
     app: any;
 
     constructor(options: IAxiosJwtHandlerOptions) {

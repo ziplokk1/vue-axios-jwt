@@ -1,4 +1,3 @@
-import { useAuthTokenInterceptor } from "axios-jwt";
 export let _Vue;
 export function install(Vue) {
   // Used to avoid multiple mixins being setup
@@ -7,9 +6,6 @@ export function install(Vue) {
   if (install.installed && _Vue === Vue) return;
   install.installed = true; // add interceptor to your axios instance
 
-  useAuthTokenInterceptor(handler.instance, {
-    requestRefresh: handler.refresh
-  });
   Vue.mixin({
     beforeCreate() {
       if (this.$options.axiosJwtHandler !== undefined) {

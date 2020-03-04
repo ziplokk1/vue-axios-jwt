@@ -39,10 +39,6 @@ export default class AxiosJwtHandler {
         this.transformer = options.transformer || defaultTransformer;
         this.login = login;
         this.logout = logout;
-
-        useAuthTokenInterceptor(this.instance, {
-            requestRefresh: this.refresh
-        });
     }
 
     refresh(): Promise<string> {

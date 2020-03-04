@@ -9,8 +9,10 @@ export function install (Vue) {
     if (install.installed && _Vue === Vue) return;
     install.installed = true;
 
-    // add interceptor to your axios instance
-    useAuthTokenInterceptor(handler.instance, {requestRefresh: handler.refresh});
+
+    useAuthTokenInterceptor(this.instance, {
+        requestRefresh: this.refresh
+    });
 
     Vue.mixin({
         beforeCreate(): void {

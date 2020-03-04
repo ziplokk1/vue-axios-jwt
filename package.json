@@ -1,6 +1,6 @@
 {
   "name": "vue-axios-jwt",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0",
   "description": "Vue plugin for axios-jwt",
   "main": "dist/index.js",
   "scripts": {

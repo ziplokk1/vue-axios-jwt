@@ -1,7 +1,7 @@
 /* @flow */
 
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
-import {clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor} from 'axios-jwt';
+import { clearAuthTokens, IAuthTokens, setAuthTokens } from 'axios-jwt';
 import { install } from './install'
 
 // More flow shit
@@ -17,8 +17,13 @@ const defaultTransformer = (response: AxiosResponse): IAuthTokens => ({
     refreshToken: response.data.refresh_token
 });
 
-export const login = (tokens: IAuthTokens): void => setAuthTokens;
-export const logout = (): void => clearAuthTokens;
+export const login = (tokens: IAuthTokens): void => {
+    return setAuthTokens(tokens);
+};
+
+export const logout = (): void => {
+    return clearAuthTokens();
+};
 
 export default class AxiosJwtHandler {
     static install: () => void;
@@ -28,7 +33,7 @@ export default class AxiosJwtHandler {
     instance: AxiosInstance;
     transformer: any;
     logout: () => void;
-    login: (IAuthTokens) => void;
+    login: (tokens: IAuthTokens) => void;
     app: any;
 
     constructor(options: IAxiosJwtHandlerOptions) {

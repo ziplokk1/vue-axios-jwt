@@ -1,6 +1,6 @@
-import Vue  from 'vue'
-import AxiosJwtHandler from './index';
+import Vue from 'vue';
 import {AxiosInstance} from 'axios';
+import {AxiosJwtHandler} from './vue-axios-jwt';
 
 declare module 'vue/types/vue' {
 

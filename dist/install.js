@@ -1,17 +1,5 @@
-import axios from "axios";
 import { useAuthTokenInterceptor } from "axios-jwt";
 export let _Vue;
-
-function axiosJwtBind() {
-  var options = this.$options; // store injection
-
-  if (options.store) {
-    this.$store = typeof options.store === 'function' ? options.store() : options.store;
-  } else if (options.parent && options.parent.$store) {
-    this.$store = options.parent.$store;
-  }
-}
-
 export function install(Vue) {
   // Used to avoid multiple mixins being setup
   // when in dev mode and hot module reload

@@ -9,7 +9,8 @@
         "build": "babel src/ -d dist/",
         "prepare": "npm run build",
         "flow": "flow check",
-        "lint": "eslint src test"
+        "lint": "eslint src test",
+        "preversion": "git add dist/. && git commit dist/. --amend --no-edit"
     },
     "lint-staged": {
         "src/*.{js}$": [

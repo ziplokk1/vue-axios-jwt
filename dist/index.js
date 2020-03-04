@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor } from 'axios-jwt';
-import { install } from './install';
-import { IAxiosJwtHandlerOptions } from '../types';
+import { install } from './install'; // More flow shit
 
 const defaultTransformer = response => ({
   accessToken: response.data.access_token,

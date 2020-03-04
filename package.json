@@ -1,37 +1,9 @@
 {
     "author": "ziplokk-1",
-    "name": "vue-axios-jwt",
-    "version": "1.2.1",
-    "description": "Vue plugin for axios-jwt",
-    "main": "dist/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "babel src/ -d dist/",
-        "prepare": "npm run build",
-        "flow": "flow check",
-        "lint": "eslint src test",
-        "preversion": "git add dist/. && git commit dist/. --amend --no-edit"
-    },
-    "lint-staged": {
-        "src/*.{js}$": [
-            "eslint --fix",
-            "git add",
-            "git commit -a --amend --no-edit"
-        ],
-        "package.json$": [
-            "jsonlint --indent='    ' -s -q package.json",
-            "git add",
-            "git commit -a --amend --no-edit"
-        ]
-    },
-    "license": "MIT",
-    "peerDependencies": {
-        "axios": "^0.19.2",
-        "vue": "^2.6.11"
-    },
     "dependencies": {
         "axios-jwt": "^1.2.0"
     },
+    "description": "Vue plugin for axios-jwt",
     "devDependencies": {
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.8.6",
@@ -52,6 +24,10 @@
         "dist/*.js",
         "types/*.d.ts"
     ],
+    "gitHooks": {
+        "commit-msg": "node scripts/verifyCommitMsg.js",
+        "pre-commit": "lint-staged"
+    },
     "keywords": [
         "vue",
         "axios",
@@ -64,15 +40,39 @@
         "typescript",
         "ts"
     ],
-    "sideEffects": false,
-    "typings": "types/index.d.ts",
-    "unpkg": "dist/vue-router.js",
+    "license": "MIT",
+    "lint-staged": {
+        "package.json$": [
+            "jsonlint --indent='    ' -s -q -i package.json",
+            "git add",
+            "git commit -a --amend --no-edit"
+        ],
+        "src/*.{js}$": [
+            "eslint --fix",
+            "git add",
+            "git commit -a --amend --no-edit"
+        ]
+    },
+    "main": "dist/index.js",
+    "name": "vue-axios-jwt",
+    "peerDependencies": {
+        "axios": "^0.19.2",
+        "vue": "^2.6.11"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ziplokk1/vue-axios-jwt"
     },
-    "gitHooks": {
-        "pre-commit": "lint-staged",
-        "commit-msg": "node scripts/verifyCommitMsg.js"
-    }
+    "scripts": {
+        "build": "babel src/ -d dist/",
+        "flow": "flow check",
+        "lint": "eslint src test",
+        "prepare": "npm run build",
+        "preversion": "git add dist/. && git commit dist/. --amend --no-edit",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "sideEffects": false,
+    "typings": "types/index.d.ts",
+    "unpkg": "dist/vue-router.js",
+    "version": "1.2.1"
 }

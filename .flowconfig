@@ -1,17 +1,17 @@
 [ignore]
-.*/node_modules/.*
 .*/test/.*
 .*/dist/.*
 
 [include]
 types/*
+node_modules/axios-jwt/src/*
 
 [libs]
-flow
 
 [lints]
 
 [declarations]
+types/augmentations.d.ts
 
 [options]
 

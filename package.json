@@ -13,6 +13,7 @@
         "eslint": "^4.19.1",
         "eslint-plugin-flowtype": "^4.6.0",
         "flow-bin": "^0.119.1",
+        "flow-typed": "^3.0.0",
         "jsonlint": "^1.6.3",
         "lint-staged": "^10.0.8",
         "prettier": "^1.19.1",

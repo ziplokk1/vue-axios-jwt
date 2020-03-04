@@ -29,9 +29,12 @@ refresh token. (e.x. `/api/v1/auth/token/refresh/`)
 
 ##### login_endpoint {string} [*optional*]
 
+The endpoint to log the user in via some kind of
+credentials. (e.x. `/api/v1/auth/login`)
+
 ---
 
-##### instance {AxiosInstance} [*optional*]
+##### instance {axios} [*optional*]
 
 The axios instance you want to use for making calls to
 the API. 

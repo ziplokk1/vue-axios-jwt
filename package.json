@@ -14,11 +14,13 @@
     "lint-staged": {
         "*.{js}$": [
             "eslint --fix",
-            "git add"
+            "git add",
+            "git commit -a --amend --no-edit"
         ],
         "*.{json}$": [
             "jsonlint --indent='    ' -s -q package.json",
-            "git add"
+            "git add",
+            "git commit -a --amend --no-edit"
         ]
     },
     "license": "MIT",

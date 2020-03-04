@@ -47,7 +47,7 @@ URL or some other axios configurations.
 
 ---
 
-##### transformer {function<Object>} [*optional*]
+##### transformer {function => object} [*optional*]
 
 A callable object which takes an AxiosResponse and
 returns an object such as `{accessToken: 'string', refreshToken: 'string'}`.

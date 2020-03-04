@@ -44,7 +44,7 @@
     "license": "MIT",
     "lint-staged": {
         "package.json$": [
-            "jsonlint --indent='    ' -s -q -i package.json",
+            "jsonlint --indent='  ' -s -q -i package.json",
             "git add",
             "git commit -a --amend --no-edit"
         ],
@@ -67,7 +67,7 @@
     "scripts": {
         "build": "babel src/ -d dist/",
         "flow": "flow check",
-        "lint": "eslint src test",
+        "lint": "eslint src test --fix",
         "prepare": "npm run build",
         "preversion": "git add dist/. && git commit dist/. --amend --no-edit",
         "test": "echo \"Error: no test specified\" && exit 1"

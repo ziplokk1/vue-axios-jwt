@@ -1,9 +1,38 @@
 {
-  "root": true,
+  "extends": [
+    "plugin:flowtype/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+    },
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
   "plugins": [
     "flowtype"
   ],
-  "extends": [
-    "plugin:flowtype/recommended"
-  ]
+  "root": true,
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-unused-vars": "error"
+  }
 }

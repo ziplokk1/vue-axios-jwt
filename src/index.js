@@ -1,7 +1,7 @@
 /* @flow */
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import { clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor } from 'axios-jwt';
-import { install } from './install'
+import { install } from './install';
 
 // More flow shit
 declare interface IAxiosJwtHandlerOptions {
@@ -52,8 +52,8 @@ export default class AxiosJwtHandler {
             axios.post(this.refreshEndpoint)
                 .then((response) => {
                     return resolve(this.transformer(response));
-                }, reject)
-        })
+                }, reject);
+        });
     }
 
     init(app: any): void {

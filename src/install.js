@@ -1,4 +1,4 @@
-import Handler from './index';
+/* @flow */
 
 export let _Vue;
 
@@ -11,14 +11,13 @@ export function install (Vue) {
 
     Vue.mixin({
         beforeCreate(): void {
-
             if (this.$options.axiosJwtHandler !== undefined) {
                 this.$options.axiosJwtHandler.init(Vue);
                 this._axiosJwtHandlerRoot = this;
                 this._axiosJwtHandler = this.$options.axiosJwtHandler;
                 this._axiosJwtHandler.init(this);
             } else {
-                this._axiosJwtHandlerRoot = (this.$parent && this.$parent._axiosJwtHandlerRoot)
+                this._axiosJwtHandlerRoot = (this.$parent && this.$parent._axiosJwtHandlerRoot);
             }
         }
     });

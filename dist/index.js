@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { clearAuthTokens, IAuthTokens, setAuthTokens } from 'axios-jwt';
+import { clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor } from 'axios-jwt';
 import { install } from './install'; // More flow shit
 
 const defaultTransformer = response => ({
@@ -29,6 +29,13 @@ export default class AxiosJwtHandler {
       axios.post(this.refreshEndpoint).then(response => {
         return resolve(this.transformer(response));
       }, reject);
+    });
+  }
+
+  init(app) {
+    this.app = app;
+    useAuthTokenInterceptor(this.instance, {
+      requestRefresh: this.refresh
     });
   }
 

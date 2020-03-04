@@ -43,6 +43,8 @@ export default class AxiosJwtHandler {
         this.transformer = options.transformer || defaultTransformer;
         this.login = login;
         this.logout = logout;
+        this.refresh = this.refresh.bind(this);
+        this.init = this.init.bind(this);
     }
 
     refresh(): Promise<string> {

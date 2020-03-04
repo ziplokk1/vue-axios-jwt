@@ -1,3 +1,5 @@
+### Vue Wrapper For [Axios-Jwt](https://github.com/jetbridge/axios-jwt)
+
 ### Usage
 
 ```javascript

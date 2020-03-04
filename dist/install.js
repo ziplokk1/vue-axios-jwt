@@ -6,12 +6,12 @@ export function install(Vue) {
   // https://github.com/vuejs/vue/issues/5089#issuecomment-284260111
   if (install.installed && _Vue === Vue) return;
   install.installed = true;
-  useAuthTokenInterceptor(this.instance, {
-    requestRefresh: this.refresh
-  });
   Vue.mixin({
     beforeCreate() {
       if (this.$options.axiosJwtHandler !== undefined) {
+        useAuthTokenInterceptor(this.instance, {
+          requestRefresh: this.refresh
+        });
         this._axiosJwtHandlerRoot = this;
         this._axiosJwtHandler = this.$options.axiosJwtHandler;
 

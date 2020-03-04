@@ -12,6 +12,7 @@ export declare class AxiosJwtHandler {
     login(tokens: IAuthTokens): void;
     logout(): void;
     refresh(): Promise<string>;
+    init(): void;
 
     static install: PluginFunction<never>;
 }

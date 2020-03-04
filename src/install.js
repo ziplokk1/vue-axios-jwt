@@ -1,4 +1,4 @@
-import {useAuthTokenInterceptor} from "axios-jwt";
+import Handler from './index';
 
 export let _Vue;
 
@@ -13,9 +13,7 @@ export function install (Vue) {
         beforeCreate(): void {
 
             if (this.$options.axiosJwtHandler !== undefined) {
-                useAuthTokenInterceptor(this.instance, {
-                    requestRefresh: this.refresh
-                });
+                this.$options.axiosJwtHandler.init(Vue);
                 this._axiosJwtHandlerRoot = this;
                 this._axiosJwtHandler = this.$options.axiosJwtHandler;
                 this._axiosJwtHandler.init(this);

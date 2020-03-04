@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor } from 'axios-jwt';
+import { clearAuthTokens, IAuthTokens, setAuthTokens } from 'axios-jwt';
 import { install } from './install'; // More flow shit
 
 const defaultTransformer = response => ({
@@ -7,8 +7,12 @@ const defaultTransformer = response => ({
   refreshToken: response.data.refresh_token
 });
 
-export const login = tokens => setAuthTokens;
-export const logout = () => clearAuthTokens;
+export const login = tokens => {
+  return setAuthTokens(tokens);
+};
+export const logout = () => {
+  return clearAuthTokens();
+};
 export default class AxiosJwtHandler {
   constructor(options) {
     this.app = null;

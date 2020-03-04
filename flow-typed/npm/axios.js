@@ -1,3 +1,4 @@
+import {IAuthTokenInterceptorConfig} from 'axios-jwt';
 
 declare module 'axios' {
     declare function post(config?: any): any;
@@ -17,6 +18,7 @@ declare module 'axios-jwt' {
         refreshToken: string,
         accessToken: string
     }
+    declare function useAuthTokenInterceptor(axios: any, config: any): void;
     declare function clearAuthTokens(): void;
     declare function setAuthTokens(tokens: IAuthTokens): void;
 }

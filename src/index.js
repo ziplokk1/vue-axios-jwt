@@ -61,6 +61,18 @@ export default class AxiosJwtHandler {
         useAuthTokenInterceptor(this.instance, {
             requestRefresh: this.refresh
         });
+
+        // Emit an error that can be intercepted in the UI from the root
+        // VM.
+        axios.interceptors.response.use(response => {
+            return response;
+        }, e => {
+            if (e.response.status >= 500) {
+                this.$emit('requestError', e);  // emit to the local component scope
+                app.$root.$emit('requestError', e);  // emit to the global bus.
+            }
+            return Promise.reject(e);
+        });
     }
 }
 

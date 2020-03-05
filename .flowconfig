@@ -11,7 +11,8 @@ node_modules/axios-jwt/src/*
 [lints]
 
 [declarations]
-types/augmentations.d.ts
+types/vue.d.ts
+types/vuex.d.ts
 
 [options]
 

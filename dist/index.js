@@ -1,11 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { clearAuthTokens, IAuthTokens, setAuthTokens, useAuthTokenInterceptor } from 'axios-jwt';
-import { install } from './install'; // More flow shit
-
-const defaultTransformer = response => ({
-  accessToken: response.data.access_token,
-  refreshToken: response.data.refresh_token
-});
+import { install } from './install';
+import _Vue from 'vue'; // More flow shit
 
 export const login = tokens => {
   return setAuthTokens(tokens);
@@ -13,32 +9,48 @@ export const login = tokens => {
 export const logout = () => {
   return clearAuthTokens();
 };
+
+function tokenTransformer(response) {
+  return {
+    refreshToken: response.data.refresh_token,
+    accessToken: response.data.access_token
+  };
+}
+
 export default class AxiosJwtHandler {
   constructor(options) {
     this.app = null;
     this.refreshEndpoint = options.refresh_endpoint;
     this.loginEndpoint = options.login_endpoint;
     this.instance = options.instance || axios.create();
-    this.transformer = options.transformer || defaultTransformer;
+    this.transformer = options.transformer || tokenTransformer;
     this.login = login;
     this.logout = logout;
     this.refresh = this.refresh.bind(this);
     this.init = this.init.bind(this);
+    this.eventBus = new _Vue({});
   }
 
-  refresh() {
+  refresh(refresh) {
     return new Promise((resolve, reject) => {
-      axios.post(this.refreshEndpoint).then(response => {
+      axios.post(this.refreshEndpoint, {
+        refresh: refresh
+      }).then(response => {
         return resolve(this.transformer(response));
       }, reject);
     });
   }
 
   init(app) {
+    if (this.app) {
+      return;
+    }
+
     this.app = app;
     useAuthTokenInterceptor(this.instance, {
       requestRefresh: this.refresh
     });
+    return this;
   }
 
 }

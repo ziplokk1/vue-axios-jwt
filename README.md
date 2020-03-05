@@ -76,3 +76,50 @@ const defaultTransformer = (response) => ({
     refreshToken: response.data.refresh_token
 })
 ```
+
+### Making Requests
+
+```vue
+<template>
+    <div>
+        <span>Hello {{ user }}</span>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Example',
+    data() {
+        return {
+            user: ''
+        }
+    },
+    mounted() {
+        this.$axios.get('/api/v1/user/')
+            .then(response => { this.user = response.data.user });
+    }
+}
+</script>
+```
+
+### Using it in other places
+
+```javascript
+/**
+* src/apiClient.js
+*/
+import AxiosJwtHandler from 'vue-axios-jwt';
+const handler = new AxiosJwtHandler({refresh_endpoint: '/api/v1/auth/refresh/'});
+export default handler.instance;
+```
+
+```javascript
+/**
+* src/main.js
+*/
+import apiClient from './apiClient';
+apiClient.post('/api/v1/something/', {data: {ayy: 'lmao'}});
+```
+
+The above structure is nice when you have your vuex store in different modules
+and need to make XHR requests within the actions.

@@ -70,7 +70,6 @@
         "flow": "flow check",
         "lint": "eslint src test --fix",
         "prepare": "npm run build",
-        "preinstall": "npm run build",
         "preversion": "git add dist/. && git commit dist/. --amend --no-edit",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

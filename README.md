@@ -1,38 +1,26 @@
-### Vue Wrapper For [Axios-Jwt](https://github.com/jetbridge/axios-jwt)
+# Descrition
 
-### Usage
+Vue Wrapper For [Axios-Jwt](https://github.com/jetbridge/axios-jwt)
 
-```javascript
-import Vue from 'vue';
-import VueAxiosJwt from 'vue-axios-jwt';
+# Configuration
 
-Vue.use(VueAxiosJwt);
+## Parameters
 
-const axiosJwtHandler = new AxiosJwtHandler({refresh_endpoint: '/api/v1/auth/token/refresh/', instance});
-
-const app = new Vue({
-    // ... other junk
-    axiosJwtHandler
-}).$mount('#app');
-```
-
-### Configuration
-
-#### Required parameters.
+### Required
 
 ----
 
-##### refresh_endpoint {string}
+#### refresh_endpoint {string}
 
 The endpoint to obtain a new access token using the 
 refresh token. (e.x. `/api/v1/auth/token/refresh/`)
 
 
-#### Optional parameters.
+### Optional
 
 ---
 
-##### login_endpoint {string}
+#### login_endpoint {string}
 
 The endpoint to log the user in via some kind of
 credentials. (e.x. `/api/v1/auth/login`)
@@ -40,7 +28,7 @@ credentials. (e.x. `/api/v1/auth/login`)
 ---
 
 
-##### instance {axios}
+#### instance {axios}
 
 The axios instance you want to use for making calls to
 the API. 
@@ -53,7 +41,7 @@ URL or some other axios configurations.
 
 ---
 
-##### transformer {function => object}
+#### transformer {function => object}
 
 A callable object which takes an AxiosResponse and
 returns an object such as `{accessToken: 'string', refreshToken: 'string'}`.
@@ -81,7 +69,21 @@ const defaultTransformer = (response) => ({
 })
 ```
 
-### Making Requests
+# Usage
+
+```javascript
+import Vue from 'vue';
+import VueAxiosJwt from 'vue-axios-jwt';
+
+Vue.use(VueAxiosJwt);
+
+const axiosJwtHandler = new AxiosJwtHandler({refresh_endpoint: '/api/v1/auth/token/refresh/'});
+
+const app = new Vue({
+    // ... other junk
+    axiosJwtHandler
+}).$mount('#app');
+```
 
 ```vue
 <template>
@@ -106,7 +108,7 @@ export default {
 </script>
 ```
 
-### Using it in other places
+## Using it in other places
 
 ```javascript
 /**

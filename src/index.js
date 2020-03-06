@@ -50,7 +50,7 @@ export default class AxiosJwtHandler {
         return new Promise((resolve, reject) => {
             axios.post(this.refreshEndpoint, {refresh: refresh})
                 .then((response) => {
-                    return resolve(this.transformer(response));
+                    return resolve(this.transformer(response).accessToken);
                 }, reject);
         });
     }

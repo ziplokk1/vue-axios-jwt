@@ -36,7 +36,7 @@ export default class AxiosJwtHandler {
       axios.post(this.refreshEndpoint, {
         refresh: refresh
       }).then(response => {
-        return resolve(this.transformer(response));
+        return resolve(this.transformer(response).accessToken);
       }, reject);
     });
   }

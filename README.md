@@ -27,16 +27,20 @@ const app = new Vue({
 The endpoint to obtain a new access token using the 
 refresh token. (e.x. `/api/v1/auth/token/refresh/`)
 
+
+#### Optional parameters.
+
 ---
 
-##### login_endpoint {string} [*optional*]
+##### login_endpoint {string}
 
 The endpoint to log the user in via some kind of
 credentials. (e.x. `/api/v1/auth/login`)
 
 ---
 
-##### instance {axios} [*optional*]
+
+##### instance {axios}
 
 The axios instance you want to use for making calls to
 the API. 
@@ -49,7 +53,7 @@ URL or some other axios configurations.
 
 ---
 
-##### transformer {function => object} [*optional*]
+##### transformer {function => object}
 
 A callable object which takes an AxiosResponse and
 returns an object such as `{accessToken: 'string', refreshToken: 'string'}`.

@@ -76,5 +76,5 @@
     "sideEffects": false,
     "typings": "types/index.d.ts",
     "unpkg": "dist/vue-router.js",
-    "version": "3.0.0"
+    "version": "3.0.1"
 }

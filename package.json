@@ -8,7 +8,7 @@
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.8.6",
         "@babel/preset-flow": "^7.8.3",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "babel-eslint": "^10.1.0",
         "eslint": "^4.19.1",
         "eslint-plugin-flowtype": "^4.6.0",
@@ -58,7 +58,7 @@
     "main": "dist/index.js",
     "name": "vue-axios-jwt",
     "peerDependencies": {
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "vue": "^2.6.11"
     },
     "repository": {
